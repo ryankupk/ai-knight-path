@@ -10,6 +10,7 @@ class Board {
         [0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0]
     ];
+        this.visited = 0;
     }
     
     show() {
@@ -17,10 +18,10 @@ class Board {
         let y = 0;
         let w = 30;
         let dark = true;
-        let color = 255;
+        let color;
         for (let i = 0; i < board.cells.length; ++i) {
         for (let j = 0; j < board.cells[i].length; ++j) {
-            color = !dark ? 0 : 255;
+            color = !dark ? 60 : 255;
             fill(color);
             rect(x, y, w, w);
             x += w;

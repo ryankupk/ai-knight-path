@@ -3,6 +3,8 @@ let knight = new Knight(board);
 
 function setup() {
   createCanvas(innerWidth - (.2 * innerWidth), innerHeight - (.2 * innerHeight));
+    let path = knight.getPath();
+    console.log(path);
 }
 
 function draw() {
