@@ -33,11 +33,7 @@ class Knight {
             //pop top of stack
             let cur = this.fringe.pop();
             //if board is oddXodd dimensions, goal state is #squares - 1
-            if (this.boardSize % 2 == 1 && cur.depth == this.boardSize - 1) {
-                return this.generatePath(cur);
-            }
-            //if board is evenXeven or evenXodd, goal state is #squares
-            else if (this.boardSize % 2 == 0 && cur.depth === this.boardSize) {
+            if ((this.boardSize % 2 === 1 && cur.depth === this.boardSize - 1) || (this.boardSize % 2 === 0 && cur.depth === this.boardSize)) {
                 return this.generatePath(cur);
             }
             //check if current state has been visited
@@ -78,12 +74,10 @@ class Knight {
             //newx/newy is currentx/currenty + the x and y of each possible move
             let newx = cur.x + this.moves[i][1];
             let newy = cur.y + this.moves[i][0];
-            //if the move goes off the board, it's invalid, continue
-            if (!((newx < this.board.cells[0].length && newx >= 0) && (newy < this.board.cells.length && newy >= 0))) {
-                continue;
-            }
             //if the move does not go off the board, push it onto successors list
-            successors.push(new Node(newx, newy, cur.depth + 1, cur));
+            if (((newx < this.board.cells[0].length && newx >= 0) && (newy < this.board.cells.length && newy >= 0))) {
+                successors.push(new Node(newx, newy, cur.depth + 1, cur));
+            }
         }
         return successors;
     }

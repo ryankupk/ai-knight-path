@@ -1,5 +1,5 @@
 let board = new Board();
-let knight = new Knight(board, 1, 3);
+let knight = new Knight(board, 0, 0);
 let path;
 let pathLength;
 let index = 0;
