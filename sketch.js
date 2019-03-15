@@ -1,5 +1,5 @@
 let board = new Board();
-let knight = new Knight(board, 0, 0);
+let knight = new Knight(board, 1, 3);
 let path;
 let pathLength;
 let index = 0;
@@ -7,7 +7,7 @@ let circles = [];
 let lines = [];
 
 function setup() {
-    createCanvas(innerWidth - (.2 * innerWidth), innerHeight - (.2 * innerHeight));
+    createCanvas(board.cells[0].length* board.w + 2, board.cells.length * board.w + 2);
     //generate path
     path = knight.getPath();
     pathLength = path.length;
