@@ -23,30 +23,26 @@ class Board {
             [0,0,0],
             [0,0,0]
     ];
+        this.x = 0;
+        this.y = 0;
+        this.w = 60;
     }
     
     show() {
-        //(x,y) coordinates and width of squares/circles
-        let x = 0;
-        let y = 0;
-        let w = 30;
+        //(x,y) coordinates and width of squares
+        let x = this.x;
+        let y = this.y;
+        let w = this.w;
         let dark = true;
-        let color;
+        //color of square
+        let sColor;
         for (let i = 0; i < board.cells.length; ++i) {
             for (let j = 0; j < board.cells[i].length; ++j) {
                 //set background color for a square based on dark boolean
-                color = !dark ? 60 : 255;
-                fill(color);
+                sColor = !dark ? 60 : 255;
+                fill(sColor);
                 //draw square
                 rect(x, y, w, w);
-                //if the current cell is one that has been visited by the knight, put a red circle in it
-                if (this.cells[i][j] === 1) {
-                    fill(255,0,0);
-                    noStroke();
-                    ellipse(x + w/2, y + w/2, w/2, w/2);
-                    fill(color);
-                    stroke(0);
-                }
                 //move to the next square
                 x += w;
                 //change from dark to light or light to dark
@@ -55,7 +51,7 @@ class Board {
             //go back to far left of canvas
             x = 0;
             //move down one row
-            y += w;
+            y += this.w;
             //if there are an even number of squares in the rows, dark must be toggled
             dark = this.cells[0].length % 2 === 0 ? !dark : dark;
         }
